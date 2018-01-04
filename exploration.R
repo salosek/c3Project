@@ -7,39 +7,43 @@ cat("\014")           ## Clear the Console
 rm(list=ls())         ## Clear the data Environment
 library(plyr)         ## Load library plyr
 
-## Explore the high level data
+## Explore the high level data  root: C:\rProjects\c3Project
 
-setwd('C:/Users/salosek/datasciencecoursera/course3project/UCI HAR Dataset')
+setwd("C:/rProjects/c3Project")
 getwd()
-list.files(pattern = "*.txt")
+list.files(path = "C:/rProjects/c3Project/data", pattern = "*.txt")
 
-features <- read.table("features.txt")
+features <- read.table("./data/features.txt")
 #head(features)
 #tail(features)
 str(features)
+count(features$V2)
 
-labels <- read.table("activity_labels.txt")
+labels <- read.table("./data/activity_labels.txt")
 head(labels)
 str(labels)
 
 ## Explore the test data
 
-setwd('C:/Users/salosek/datasciencecoursera/course3project/UCI HAR Dataset/test')
-list.files(pattern = "*.txt")
+list.files(path = "C:/rProjects/c3Project/data/test", pattern = "*.txt")
 
-subject_test <- read.table("subject_test.txt")
+subject_test <- read.table("./data/test/subject_test.txt")
 head(subject_test)
 str(subject_test)
 count(subject_test$V1)
 
-x_test <- read.table("X_test.txt")
+x_test <- read.table("./data/test/X_test.txt")
 str(x_test)
 
-y_test <- read.table("y_test.txt")
+y_test <- read.table("./data/test/y_test.txt")
+str(y_test)
 head(y_test)
 count(y_test$V1)
 
-setwd('C:/Users/salosek/datasciencecoursera/course3project/UCI HAR Dataset/test/Inertial Signals')
+
+## list.files did not work with "./data/ form, so set specific working directory
+setwd('C:/rProjects/c3Project/data/test/Inertial Signals')
+list.files(pattern = "*.txt")
 
 testIS <- list.files(pattern = "*.txt")
 tempfn <- testIS
@@ -48,24 +52,27 @@ for (i in 1:length(testIS)) { tempfn[i] <- sub(".txt","",tempfn[i])
 assign(tempfn[i], read.table(testIS[i])) }
 rm(testIS, tempfn, i)
 
+## reset path to higher level
+setwd("C:/rProjects/c3Project")
 
 ## Explore the training data
 
-setwd('C:/Users/salosek/datasciencecoursera/course3project/UCI HAR Dataset/train')
-list.files(pattern = "*.txt")
+list.files(path = "C:/rProjects/c3Project/data/train", pattern = "*.txt")
 
-subject_train <- read.table("subject_train.txt")
+subject_train <- read.table("./data/train/subject_train.txt")
 str(subject_train)
 count(subject_train$V1)
 
-x_train <- read.table("X_train.txt")
+x_train <- read.table("./data/train/X_train.txt")
 str(x_train)
 
-y_train <- read.table("y_train.txt")
+y_train <- read.table("./data/train/y_train.txt")
 head(y_train)
 count(y_train$V1)
 
-setwd('C:/Users/salosek/datasciencecoursera/course3project/UCI HAR Dataset/train/Inertial Signals')
+## list.files did not work with "./data/ form, so set specific working directory
+setwd('C:/rProjects/c3Project/data/train/Inertial Signals')
+list.files(pattern = "*.txt")
 
 trainIS <- list.files(pattern = "*.txt")
 tempfn <- trainIS
