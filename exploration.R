@@ -41,7 +41,7 @@ head(y_test)
 count(y_test$V1)
 
 
-## list.files did not work with "./data/ form, so set specific working directory
+## list.files did not work with "./data/ format, so set specific working directory
 setwd('C:/rProjects/c3Project/data/test/Inertial Signals')
 list.files(pattern = "*.txt")
 
@@ -70,7 +70,7 @@ y_train <- read.table("./data/train/y_train.txt")
 head(y_train)
 count(y_train$V1)
 
-## list.files did not work with "./data/ form, so set specific working directory
+## list.files did not work with "./data/ format, so set specific working directory
 setwd('C:/rProjects/c3Project/data/train/Inertial Signals')
 list.files(pattern = "*.txt")
 
