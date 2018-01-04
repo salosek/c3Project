@@ -5,7 +5,7 @@
 
 cat("\014")           ## Clear the Console
 rm(list=ls())         ## Clear the data Environment
-library(plyr)
+library(plyr)         ## Load library plyr
 
 ## Explore the high level data
 
