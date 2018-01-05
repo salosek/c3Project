@@ -1,7 +1,7 @@
 ## Coursera Data Science track, Johns Hopkins U
 ## Getting and Cleaning Data course project
 ## Author: Scott Loseke
-## The purpose of this script is to explore the data, see what's there.
+## The purpose of this script is to explore the data, see what's there and see how it fits together.
 
 cat("\014")           ## Clear the Console
 rm(list=ls())         ## Clear the data Environment
