@@ -36,7 +36,7 @@ To create this dataset we needed to trust the data in the observations dataset l
 the subject and activities datasets. Steps were taken to ensure the order was preserved.
 
 Step 5 creates the second tidy dataset
-See codeBook.md for a full description of the variables in the final tidy dataset.
+See codeBook.pdf for a full description of the variables in the final tidy dataset.
 
 The script run_analysis.R contains further documentation.
 
