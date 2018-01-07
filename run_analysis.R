@@ -25,7 +25,7 @@ x_full <- rbind(x_train, x_test)
 ## Measurements described in the features dataset
 
 features <- read.table("./data/features.txt", stringsAsFactors = FALSE)
-## create the vector xy to reference the columns in X_full to extract
+## create the vector xy to reference the columns in X_full to extract the mean() and std() columns
 x <- grep("-mean()", features$V2, fixed = TRUE)
 y <- grep("-std()", features$V2)
 xy <- c(x, y)
@@ -69,6 +69,10 @@ head(y_full)
 rm(y_train, y_test)
 
 labels <- read.table("./data/activity_labels.txt")
+## paste the number in front of the activity description to be anal about sort order later
+## will be undone later prior to writing the final tidy dataset
+labels$V2 <- paste(labels$V1, labels$V2, sep=".")
+labels
 
 ## join the activity description to the activity code in y_full
 ## be careful to preserve the order for later merging with x_fullext
@@ -98,5 +102,17 @@ head(x_fulltidy[, 1:3])
 library(dplyr)
 
 meanXtidy <- x_fulltidy %>% group_by(subjectCode, activityDescription) %>% summarize_all(funs(mean))
+
+## remove the number in front of the activity description
+meanXtidy$activityDescription <- substring(meanXtidy$activityDescription, 3)
+
+## write the tidy dataset to complete step 5 and submit
+getwd()
+write.table(meanXtidy, "tidyXMeans.txt", row.names = FALSE)
+
+## for those that like Excel
+library(openxlsx)
+        
+write.xlsx(meanXtidy, "tidyXMeans.xlsx", row.names = FALSE)
 
 head(meanXtidy[,1:3])
