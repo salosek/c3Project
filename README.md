@@ -35,7 +35,14 @@ Step 4 labels the variables. The complete tidy dataset x_fulltidy contains 10299
 To create this dataset we needed to trust the data in the observations dataset lined up properly with the data in
 the subject and activities datasets. Steps were taken to ensure the order was preserved.
 
-Step 5 creates the second tidy dataset
+Step 5 creates the second tidy dataset: meanXtidy.txt. This is the file uploaded to the submission page.
+To read this file into R use:
+datafile <- read.table("tidyXMeans.txt", header = TRUE)
+
+For some reason using testread <- read.table("tidyXMeans.txt", col.names = TRUE, row.names = FALSE)
+gave the following: Error in read.table("tidyXMeans.txt", col.names = TRUE, row.names = FALSE) :
+more columns than column names ???
+ 
 See codeBook.pdf for a full description of the variables in the final tidy dataset.
 
 The script run_analysis.R contains further documentation.

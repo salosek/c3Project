@@ -108,7 +108,7 @@ meanXtidy$activityDescription <- substring(meanXtidy$activityDescription, 3)
 
 ## write the tidy dataset to complete step 5 and submit
 getwd()
-write.table(meanXtidy, "tidyXMeans.txt", row.names = FALSE)
+write.table(meanXtidy, "tidyXMeans.txt", row.names = FALSE, col.names = TRUE)
 
 ## for those that like Excel
 library(openxlsx)
@@ -116,3 +116,5 @@ library(openxlsx)
 write.xlsx(meanXtidy, "tidyXMeans.xlsx", row.names = FALSE)
 
 head(meanXtidy[,1:3])
+
+testread <- read.table("tidyXMeans.txt", header = TRUE)
